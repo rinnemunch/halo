@@ -1,10 +1,12 @@
 import speech_recognition as sr
 import pyttsx3
+import webbrowser
+import datetime
+import os
 
-# Init TTS engine
 engine = pyttsx3.init()
-engine.setProperty('rate', 150)  # Speed
-engine.setProperty('voice', engine.getProperty('voices')[1].id)  # Female voice (optional)
+engine.setProperty('rate', 150)
+engine.setProperty('voice', engine.getProperty('voices')[1].id)  # Optional: switch to female voice
 
 
 def speak(text):
@@ -31,8 +33,26 @@ def listen():
     return ""
 
 
+def handle_command(command):
+    if "youtube" in command:
+        speak("Opening YouTube.")
+        webbrowser.open("https://www.youtube.com")
+    elif "time" in command:
+        now = datetime.datetime.now().strftime("%I:%M %p")
+        speak(f"The current time is {now}.")
+    elif "chrome" in command:
+        speak("Opening Google Chrome.")
+        os.system("start chrome")  # Works on Windows
+    elif "exit" in command or "quit" in command:
+        speak("Goodbye.")
+        exit()
+    else:
+        speak("Sorry, I don't know that command yet.")
+
+
 if __name__ == "__main__":
-    speak("Hello, I'm Halo. Say something.")
-    user_command = listen()
-    if user_command:
-        speak(f"You said: {user_command}")
+    speak("Hello, I'm Halo. How can I help?")
+    while True:
+        user_input = listen()
+        if user_input:
+            handle_command(user_input)

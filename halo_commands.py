@@ -70,6 +70,12 @@ def handle_command(command, window=None, speak_gui=None, log_command=None, print
         if window:
             window.quit()
 
+    elif "flip a coin" in command or "coin toss" in command:
+        result = random.choice(["heads", "tails"])
+        response = f"It's {result}."
+        speak_gui(response)
+        log_command(command, response)
+
     else:
         response = "Sorry, I don't know that command yet."
         speak_gui(response)

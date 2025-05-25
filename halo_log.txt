@@ -11,3 +11,9 @@
 [2025-05-24 02:50:42] You: exit
 [2025-05-24 02:50:42] Halo: Goodbye.
 
+[2025-05-25 07:44:24] You: Play music
+[2025-05-25 07:44:24] Halo: Sorry, I don't know that command yet.
+
+[2025-05-25 07:44:29] You: music
+[2025-05-25 07:44:29] Halo: Sorry, I don't know that command yet.
+

@@ -14,11 +14,20 @@ window = tk.Tk()
 window.title("Halo Assistant")
 window.geometry("500x450")
 
-output_box = scrolledtext.ScrolledText(window, wrap=tk.WORD, state='disabled')
+# Output frame
+output_frame = tk.Frame(window)
+output_frame.pack(fill=tk.BOTH, expand=True)
+
+output_box = scrolledtext.ScrolledText(output_frame, wrap=tk.WORD, state='disabled', height=15)
 output_box.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
 
-manual_entry = tk.Entry(window)
+# Entry frame
+entry_frame = tk.Frame(window)
+entry_frame.pack(fill=tk.X)
+
+manual_entry = tk.Entry(entry_frame)
 manual_entry.pack(padx=10, pady=(0, 10), fill=tk.X)
+
 
 engine = pyttsx3.init()
 engine.setProperty('rate', 150)
@@ -48,11 +57,19 @@ def log_command(user_command, halo_response):
 
 
 def listen():
+    print_to_gui("✅ Entered listen()")
     recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        print_to_gui("🎙️ Listening...")
-        recognizer.adjust_for_ambient_noise(source)
-        audio = recognizer.listen(source)
+
+    try:
+        with sr.Microphone() as source:
+            print_to_gui("🎙️ Microphone opened.")
+            recognizer.adjust_for_ambient_noise(source)
+            print_to_gui("🔊 Calibrated for ambient noise.")
+            audio = recognizer.listen(source)
+            print_to_gui("📡 Processing audio...")
+    except Exception as mic_error:
+        print_to_gui(f"⚠️ Mic error: {mic_error}")
+        return ""
 
     try:
         command = recognizer.recognize_google(audio)
@@ -62,6 +79,8 @@ def listen():
         speak_gui("Sorry, I didn’t catch that.")
     except sr.RequestError:
         speak_gui("Speech recognition is unavailable.")
+    except Exception as e:
+        print_to_gui(f"⚠️ Recognition error: {e}")
     return ""
 
 
@@ -148,7 +167,18 @@ def run_manual_command():
 
 
 def run_voice_command():
-    threading.Thread(target=lambda: handle_command(listen())).start()
+    def threaded_listen():
+        print_to_gui("🧵 Voice thread started.")
+        try:
+            result = listen()
+            if result:
+                handle_command(result)
+            else:
+                print_to_gui("❌ No voice input received.")
+        except Exception as e:
+            print_to_gui(f"🛑 Error in voice thread: {str(e)}")
+
+    threading.Thread(target=threaded_listen).start()
 
 
 def show_log():
@@ -159,20 +189,20 @@ def show_log():
     except:
         print_to_gui("No log file found.")
 
+        # ---------------- Start ----------------
 
-# ---------------- Buttons ----------------
-
-tk.Button(window, text="🎙️ Speak", command=run_voice_command).pack(pady=5)
-tk.Button(window, text="Submit Text", command=run_manual_command).pack(pady=5)
-tk.Button(window, text="View Log", command=show_log).pack(pady=5)
-
-
-# ---------------- Start ----------------
 
 def startup_message():
     speak_gui("Hello, I'm Halo. How can I help?")
 
 
 threading.Thread(target=startup_message).start()
+
+# ---------------- Buttons ----------------
+
+print_to_gui("✅ GUI finished loading. Adding buttons now.")
+tk.Button(window, text="TEST SPEAK", command=run_voice_command).pack(pady=5)
+tk.Button(window, text="Submit Text", command=run_manual_command).pack(pady=5)
+tk.Button(window, text="View Log", command=show_log).pack(pady=5)
 
 window.mainloop()

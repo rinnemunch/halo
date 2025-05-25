@@ -17,3 +17,15 @@
 [2025-05-25 07:44:29] You: music
 [2025-05-25 07:44:29] Halo: Sorry, I don't know that command yet.
 
+[2025-05-25 07:48:12] You: joke
+[2025-05-25 07:48:12] Halo: I told my computer I needed a break, and now it won’t stop sending me Kit-Kats.
+
+[2025-05-25 07:48:20] You: play music
+[2025-05-25 07:48:20] Halo: Playing music.
+
+[2025-05-25 07:49:33] You: play music
+[2025-05-25 07:49:33] Halo: Playing music.
+
+[2025-05-25 08:01:46] You: chrome
+[2025-05-25 08:01:46] Halo: Opening Google Chrome.
+

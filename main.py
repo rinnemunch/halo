@@ -8,6 +8,7 @@ import requests
 import tkinter as tk
 from tkinter import scrolledtext
 import threading
+from halo_commands import handle_command
 
 # ---------------- GUI Setup ----------------
 window = tk.Tk()
@@ -28,14 +29,13 @@ entry_frame.pack(fill=tk.X)
 manual_entry = tk.Entry(entry_frame)
 manual_entry.pack(padx=10, pady=(0, 10), fill=tk.X)
 
-
+# ---------------- Voice Engine ----------------
 engine = pyttsx3.init()
 engine.setProperty('rate', 150)
 engine.setProperty('voice', engine.getProperty('voices')[1].id)
 
 
 # ---------------- Helper Functions ----------------
-
 def print_to_gui(text):
     output_box.config(state='normal')
     output_box.insert(tk.END, text + "\n")
@@ -84,86 +84,13 @@ def listen():
     return ""
 
 
-# ---------------- Command Handler ----------------
-
-def handle_command(command):
-    if "youtube" in command:
-        response = "Opening YouTube."
-        speak_gui(response)
-        log_command(command, response)
-        webbrowser.open("https://www.youtube.com")
-
-    elif "time" in command:
-        now = datetime.now().strftime("%I:%M %p")
-        response = f"The current time is {now}."
-        speak_gui(response)
-        log_command(command, response)
-
-    elif "chrome" in command:
-        response = "Opening Google Chrome."
-        speak_gui(response)
-        log_command(command, response)
-        os.system("start chrome")
-
-    elif "joke" in command:
-        jokes = [
-            "Why don’t programmers like nature? It has too many bugs.",
-            "I told my computer I needed a break, and now it won’t stop sending me Kit-Kats.",
-            "What do you call 8 hobbits? A hobbyte."
-        ]
-        response = random.choice(jokes)
-        speak_gui(response)
-        log_command(command, response)
-
-    elif "play music" in command:
-        music_path = "C:\\Users\\fulto\\Music\\StopTheCar.mp3"
-        response = "Playing music."
-        speak_gui(response)
-        log_command(command, response)
-        os.startfile(music_path)
-
-    elif "weather" in command:
-        response = "Checking the weather..."
-        speak_gui(response)
-        try:
-            res = requests.get("https://wttr.in/?format=3")
-            speak_gui(res.text)
-            log_command(command, res.text)
-        except:
-            error_response = "Sorry, couldn't get the weather right now."
-            speak_gui(error_response)
-            log_command(command, error_response)
-
-    elif "log" in command or "show log" in command:
-        response = "Showing your recent commands."
-        speak_gui(response)
-        log_command(command, response)
-        try:
-            with open("halo_log.txt", "r", encoding="utf-8") as file:
-                print_to_gui(file.read())
-        except:
-            print_to_gui("No log found.")
-
-    elif "exit" in command or "quit" in command:
-        response = "Goodbye."
-        speak_gui(response)
-        log_command(command, response)
-        window.quit()
-
-    else:
-        response = "Sorry, I don't know that command yet."
-        speak_gui(response)
-        log_command(command, response)
-
-
 # ---------------- GUI Event Functions ----------------
-
 def run_manual_command():
     cmd = manual_entry.get()
     manual_entry.delete(0, tk.END)
     if cmd:
         print_to_gui(f"You: {cmd}")
-        threading.Thread(target=handle_command, args=(cmd,)).start()
+        threading.Thread(target=handle_command, args=(cmd, window, speak_gui, log_command, print_to_gui)).start()
 
 
 def run_voice_command():
@@ -172,7 +99,7 @@ def run_voice_command():
         try:
             result = listen()
             if result:
-                handle_command(result)
+                handle_command(result, window, speak_gui, log_command, print_to_gui)
             else:
                 print_to_gui("❌ No voice input received.")
         except Exception as e:
@@ -189,9 +116,8 @@ def show_log():
     except:
         print_to_gui("No log file found.")
 
-        # ---------------- Start ----------------
 
-
+# ---------------- Start ----------------
 def startup_message():
     speak_gui("Hello, I'm Halo. How can I help?")
 
@@ -199,7 +125,6 @@ def startup_message():
 threading.Thread(target=startup_message).start()
 
 # ---------------- Buttons ----------------
-
 tk.Button(window, text="Speak", command=run_voice_command).pack(pady=5)
 tk.Button(window, text="Submit Text", command=run_manual_command).pack(pady=5)
 tk.Button(window, text="View Log", command=show_log).pack(pady=5)

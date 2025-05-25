@@ -33,3 +33,25 @@
 [2025-05-25 08:27:43] Halo: Concord, North Carolina, United States: ☁️   +63°F
 
 
+[2025-05-25 12:56:33] You: flip a coin
+[2025-05-25 12:56:33] Halo: It's heads.
+
+[2025-05-25 13:00:07] You: music
+[2025-05-25 13:00:07] Halo: Sorry, I don't know that command yet.
+
+[2025-05-25 13:00:23] You: play music
+[2025-05-25 13:00:23] Halo: Playing music.
+
+[2025-05-25 13:00:50] You: weather
+[2025-05-25 13:00:50] Halo: Concord, North Carolina, United States: ☁️   +68°F
+
+
+[2025-05-25 13:01:03] You: joke
+[2025-05-25 13:01:03] Halo: What do you call 8 hobbits? A hobbyte.
+
+[2025-05-25 13:01:14] You: time
+[2025-05-25 13:01:14] Halo: The current time is 01:01 PM.
+
+[2025-05-25 13:01:20] You: youtube
+[2025-05-25 13:01:20] Halo: Opening YouTube.
+

@@ -9,6 +9,7 @@ import tkinter as tk
 from tkinter import scrolledtext
 import threading
 from halo_commands import handle_command
+from halo_face_window import show_halo_face
 
 # ---------------- GUI Setup ----------------
 window = tk.Tk()
@@ -129,4 +130,5 @@ tk.Button(window, text="Speak", command=run_voice_command).pack(pady=5)
 tk.Button(window, text="Submit Text", command=run_manual_command).pack(pady=5)
 tk.Button(window, text="View Log", command=show_log).pack(pady=5)
 
+show_halo_face()
 window.mainloop()

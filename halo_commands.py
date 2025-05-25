@@ -76,6 +76,12 @@ def handle_command(command, window=None, speak_gui=None, log_command=None, print
         speak_gui(response)
         log_command(command, response)
 
+    elif "open notepad" in command:
+        response = "Opening Notepad."
+        speak_gui(response)
+        log_command(command, response)
+        os.system("start notepad")
+
     else:
         response = "Sorry, I don't know that command yet."
         speak_gui(response)

@@ -200,8 +200,7 @@ threading.Thread(target=startup_message).start()
 
 # ---------------- Buttons ----------------
 
-print_to_gui("✅ GUI finished loading. Adding buttons now.")
-tk.Button(window, text="TEST SPEAK", command=run_voice_command).pack(pady=5)
+tk.Button(window, text="Speak", command=run_voice_command).pack(pady=5)
 tk.Button(window, text="Submit Text", command=run_manual_command).pack(pady=5)
 tk.Button(window, text="View Log", command=show_log).pack(pady=5)
 

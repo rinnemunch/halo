@@ -1,10 +1,6 @@
 import speech_recognition as sr
 import pyttsx3
-import webbrowser
 from datetime import datetime
-import os
-import random
-import requests
 import tkinter as tk
 from tkinter import scrolledtext
 import threading

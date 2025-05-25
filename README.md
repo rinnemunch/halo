@@ -1,75 +1,81 @@
-# 🎙️ Halo – Your Personal Voice Assistant
+🎙️ Halo – Your Personal Voice Assistant
 
-**Halo** is a fully offline voice-controlled assistant built with Python.  
-It listens to your voice, talks back, opens apps, checks the time, tells jokes, plays music, and even logs your commands.
+Halo is a Python-based voice assistant with a clean GUI, speech-to-text, and offline command execution.
+It listens to your voice, speaks responses, controls your apps, and keeps a log of everything you say.
 
----
+🧠 Features
+✅ GUI built with tkinter (Dark mode coming soon)
+✅ Voice recognition using speech_recognition
+✅ Text-to-speech with pyttsx3
+✅ Modular command system (halo_commands.py)
+✅ Threaded input so the UI stays responsive
+✅ Command logging (halo_log.txt)
+✅ Works offline for most features
 
-## 🧠 Features
+🗣️ Supported voice/text commands:
 
-✅ Voice recognition (speech-to-text using `speech_recognition`)  
-✅ Text-to-speech responses using `pyttsx3`  
-✅ Commands:
-- “Open YouTube”
-- “What time is it?”
-- “Tell me a joke”
-- “Check the weather”
-- “Open Chrome”
-- “Play music”
-- “Show log”
-- “Exit”
+“Open YouTube”
 
-✅ Offline command logging (`halo_log.txt`)  
-✅ Run in terminal or via PyCharm  
-✅ No internet needed for most features  
+“What time is it?”
 
----
+“Tell me a joke”
 
-## 🖼️ Preview
+“Check the weather”
 
-#Coming soon I need to build a GUI!
+“Open Chrome”
 
----
+“Play music”
 
-## 🚀 How to Run
+“Show log”
 
-### 1. Clone the repo
+“Exit”
 
-```bash
+🖼️ Preview
+
+![Halo GUI in action](Gifs/animation.gif)
+
+🚀 How to Run
+1. Clone the repo
+bash
+````
 git clone https://github.com/rinnemunch/halo.git
 cd halo
-```` 
-2. Create and activate virtual environment 
-```bash
+````
+
+2. Create and activate a virtual environment
+bash 
+````
 python -m venv venv
-.\venv\Scripts\activate     # Windows
-````  
+.\venv\Scripts\activate  # Windows
+````
 
-3. Install requirements
-```bash
-pip install -r requirements.txt
-````   
+3. Install dependencies
+bash
+````
+pip install -r requirements.txt 
+````
 
-Or manually:  
-```bash
-pip install speechrecognition pyttsx3 pyaudio requests
-pip install pipwin && pipwin install pyaudio  # if needed
-````    
-4. Start Halo 
-```bash
+If you have issues with pyaudio, use:
+bash 
+````
+pip install pipwin
+pipwin install pyaudio
+````
+
+4. Start Halo
+bash
+````
 python main.py
-````    
-
-📂 Log Example 
-```bash
-[2025-05-23 20:45:17] You: what time is it
-[2025-05-23 20:45:17] Halo: The current time is 08:45 PM.
-````    
-
-💻 Requirements 
+````
+📂 Example Log
+bash
+````
+[2025-05-25 07:01:45] You: tell me a joke
+[2025-05-25 07:01:46] Halo: I told my computer I needed a break, and now it won’t stop sending me Kit-Kats. (Yes I searched up corny jokes lol)
+````
+💻 Requirements
 Python 3.10+
 
-Microphone input
+Microphone (optional – all commands can also be typed)
 
-Internet for weather only (optional)
-
+Internet (only needed for weather queries)

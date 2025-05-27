@@ -1,46 +1,29 @@
-import tkinter as tk
-from PIL import Image, ImageTk, ImageSequence
+from PyQt6.QtWidgets import QDialog, QLabel
+from PyQt6.QtGui import QMovie
+from PyQt6.QtCore import Qt
 
 
-class HaloFaceWindow:
-    def __init__(self, parent, gif_path):
-        self.root = tk.Toplevel(parent)
-        self.root.title("Halo's Face")
-        self.root.resizable(False, False)
+class HaloFaceWindow(QDialog):
+    def __init__(self, parent=None, gif_path="halo_face.gif"):
+        super().__init__(parent)
+        self.setWindowTitle("Halo's Face")
+        self.setFixedSize(300, 300)
 
-        # Wait until the main window is fully rendered
-        parent.update_idletasks()
+        self.label = QLabel(self)
+        self.label.setGeometry(0, 0, 300, 300)
 
-        # try to calculate position next to main window
-        x = parent.winfo_x() + parent.winfo_width() + 20
-        y = parent.winfo_y()
-        self.root.geometry(f"300x300+{x}+{y}")
+        self.movie = QMovie(gif_path)
+        self.label.setMovie(self.movie)
+        self.movie.start()
 
-        self.label = tk.Label(self.root)
-        self.label.pack()
-
-        self.gif = Image.open(gif_path)
-        self.frames = [ImageTk.PhotoImage(frame.copy().convert("RGBA")) for frame in ImageSequence.Iterator(self.gif)]
-        self.frame_index = 0
-
-        self.update_frame()
+        # Try to place to the right of the main window
+        if parent:
+            x = parent.x() + parent.width() + 20
+            y = parent.y()
+            self.move(x, y)
 
 
-    def update_frame(self):
-        frame = self.frames[self.frame_index]
-        self.label.configure(image=frame)
-        self.frame_index = (self.frame_index + 1) % len(self.frames)
-        self.root.after(100, self.update_frame)  # adjust for speed
-
-
-def show_halo_face(parent):
-    HaloFaceWindow(parent, "halo_face.gif")
-
-
-
-# Test
-if __name__ == "__main__":
-    root = tk.Tk()
-    root.withdraw()  # Hide main window
-    show_halo_face()
-    root.mainloop()
+def show_halo_face(parent=None):
+    face_window = HaloFaceWindow(parent)
+    face_window.show()
+    return face_window

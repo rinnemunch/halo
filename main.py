@@ -9,6 +9,7 @@ from PyQt6.QtGui import QFont
 from PyQt6.QtWidgets import QLineEdit, QPushButton
 from PyQt6.QtGui import QPalette, QColor
 from PyQt6.QtCore import Qt
+from halo_face_window import show_halo_face
 
 # ---------------- App + Window ----------------
 app = QApplication(sys.argv)
@@ -76,6 +77,7 @@ log_button.setStyleSheet(button_style)
 app.setPalette(palette)
 window.setLayout(layout)
 window.show()
+face_ref = show_halo_face(window)
 
 # ---------------- Voice Engine ----------------
 engine = pyttsx3.init()

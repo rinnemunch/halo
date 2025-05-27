@@ -49,23 +49,23 @@ log_button.clicked.connect(lambda: show_log())
 log_button.setFixedHeight(30)
 layout.addWidget(log_button)
 
-# White background, blue text/buttons
 palette = QPalette()
-palette.setColor(QPalette.ColorRole.Window, QColor("#ffffff"))  # App background
-palette.setColor(QPalette.ColorRole.Base, QColor("#ffffff"))  # Text field background
-palette.setColor(QPalette.ColorRole.Text, QColor("#005A9C"))  # Text color
-palette.setColor(QPalette.ColorRole.Button, QColor("#005A9C"))  # Button background
-palette.setColor(QPalette.ColorRole.ButtonText, QColor("#ffffff"))  # Button text
+palette.setColor(QPalette.ColorRole.Window, QColor("#121212"))
+palette.setColor(QPalette.ColorRole.Base, QColor("#1e1e1e"))
+palette.setColor(QPalette.ColorRole.Text, QColor("#A9C6FF"))
+palette.setColor(QPalette.ColorRole.Button, QColor("#003f73"))
+palette.setColor(QPalette.ColorRole.ButtonText, QColor("#ffffff"))
+
 
 button_style = """
 QPushButton {
-    background-color: #005A9C;
+    background-color: #003f73;
     color: white;
     border-radius: 6px;
     padding: 6px;
 }
 QPushButton:hover {
-    background-color: #003f73;
+    background-color: #005A9C;
 }
 """
 

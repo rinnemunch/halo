@@ -32,6 +32,16 @@ submit_button = QPushButton("Submit Text")
 submit_button.clicked.connect(lambda: run_manual_command())
 layout.addWidget(submit_button)
 
+# Speak Button
+speak_button = QPushButton("Speak")
+speak_button.clicked.connect(lambda: run_voice_command())
+layout.addWidget(speak_button)
+
+# View Log Button
+log_button = QPushButton("View Log")
+log_button.clicked.connect(lambda: show_log())
+layout.addWidget(log_button)
+
 window.setLayout(layout)
 window.show()
 
@@ -93,6 +103,30 @@ def run_manual_command():
     if cmd:
         print_to_gui(f"You: {cmd}")
         threading.Thread(target=handle_command, args=(cmd, window, speak_gui, log_command, print_to_gui)).start()
+
+
+def run_voice_command():
+    def threaded_listen():
+        print_to_gui("🧵 Voice thread started.")
+        try:
+            result = listen()
+            if result:
+                handle_command(result, window, speak_gui, log_command, print_to_gui)
+            else:
+                print_to_gui("❌ No voice input received.")
+        except Exception as e:
+            print_to_gui(f"🛑 Error in voice thread: {str(e)}")
+
+    threading.Thread(target=threaded_listen).start()
+
+
+def show_log():
+    try:
+        with open("halo_log.txt", "r", encoding="utf-8") as file:
+            log_content = file.read()
+            print_to_gui(f"--- HALO LOG ---\n{log_content}")
+    except:
+        print_to_gui("No log file found.")
 
 
 # ---------------- Start ----------------

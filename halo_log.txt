@@ -42,3 +42,21 @@
 [2025-05-27 09:47:25] You: Tell me fact
 [2025-05-27 09:47:25] Halo: Bananas are berries, but strawberries aren't.
 
+[2025-05-27 10:09:43] You: Weather
+[2025-05-27 10:09:43] Halo: Sorry, I don't know that command yet.
+
+[2025-05-27 10:09:46] You: time
+[2025-05-27 10:09:46] Halo: The current time is 10:09 AM.
+
+[2025-05-27 10:11:25] You: Tell me a fact
+[2025-05-27 10:11:25] Halo: Bananas are berries, but strawberries aren't.
+
+[2025-05-27 10:11:29] You: fact
+[2025-05-27 10:11:29] Halo: Octopuses have three hearts and blue blood.
+
+[2025-05-27 10:16:16] You: What is the weathe 
+[2025-05-27 10:16:16] Halo: Sorry, I don't know that command yet.
+
+[2025-05-27 10:20:59] You: Time
+[2025-05-27 10:20:59] Halo: Sorry, I don't know that command yet.
+

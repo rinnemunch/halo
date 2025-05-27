@@ -33,7 +33,7 @@ It listens to your voice, speaks responses, controls your apps, and keeps a log 
 
 ## 🖼️ Preview
 
-![Preview](Gifs/Animation.gif)
+![Preview](Gifs/halo_face_v2.gif)
 
 
 ## 🚀 How to Run

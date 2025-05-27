@@ -77,7 +77,7 @@ log_button.setStyleSheet(button_style)
 app.setPalette(palette)
 window.setLayout(layout)
 window.show()
-face_ref = show_halo_face(window)
+face_ref = show_halo_face(window, "Gifs/halo-cortana.gif")
 
 # ---------------- Voice Engine ----------------
 engine = pyttsx3.init()

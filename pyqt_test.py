@@ -1,5 +1,8 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLabel
+from PyQt6.QtGui import QFont
+
+
 
 
 class HaloTest(QWidget):
@@ -29,6 +32,7 @@ class HaloTest(QWidget):
 
 
 app = QApplication(sys.argv)
+app.setFont(QFont("Consolas", 11, weight=QFont.Weight.Bold))
 window = HaloTest()
 window.show()
 sys.exit(app.exec())

@@ -25,21 +25,25 @@ layout.addWidget(output_box)
 # Manual Entry Box
 manual_entry = QLineEdit()
 manual_entry.setPlaceholderText("Type a command...")
+manual_entry.setFixedHeight(30)
 layout.addWidget(manual_entry)
 
 # Submit Button
 submit_button = QPushButton("Submit Text")
 submit_button.clicked.connect(lambda: run_manual_command())
+submit_button.setFixedHeight(30)
 layout.addWidget(submit_button)
 
 # Speak Button
 speak_button = QPushButton("Speak")
 speak_button.clicked.connect(lambda: run_voice_command())
+speak_button.setFixedHeight(30)
 layout.addWidget(speak_button)
 
-# View Log Button
+# Log Button
 log_button = QPushButton("View Log")
 log_button.clicked.connect(lambda: show_log())
+log_button.setFixedHeight(30)
 layout.addWidget(log_button)
 
 window.setLayout(layout)

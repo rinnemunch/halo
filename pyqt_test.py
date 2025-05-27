@@ -1,0 +1,34 @@
+import sys
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLabel
+
+
+class HaloTest(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Halo PyQt Test")
+        self.setGeometry(100, 100, 300, 200)
+
+        layout = QVBoxLayout()
+
+        self.label = QLabel("Hello, I'm Halo. How can I help?")
+        layout.addWidget(self.label)
+
+        self.button1 = QPushButton("Speak")
+        self.button1.clicked.connect(lambda: self.label.setText("You clicked Speak"))
+        layout.addWidget(self.button1)
+
+        self.button2 = QPushButton("Submit Text")
+        self.button2.clicked.connect(lambda: self.label.setText("You clicked Submit"))
+        layout.addWidget(self.button2)
+
+        self.button3 = QPushButton("View Log")
+        self.button3.clicked.connect(lambda: self.label.setText("You clicked View Log"))
+        layout.addWidget(self.button3)
+
+        self.setLayout(layout)
+
+
+app = QApplication(sys.argv)
+window = HaloTest()
+window.show()
+sys.exit(app.exec())

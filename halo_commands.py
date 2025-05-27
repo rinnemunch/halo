@@ -82,6 +82,16 @@ def handle_command(command, window=None, speak_gui=None, log_command=None, print
         log_command(command, response)
         os.system("start notepad")
 
+    elif "fact" in command:
+        facts = [
+            "Honey never spoils. Archaeologists have found 3000-year-old jars of honey in ancient Egyptian tombs.",
+            "Bananas are berries, but strawberries aren't.",
+            "Octopuses have three hearts and blue blood."
+        ]
+        response = random.choice(facts)
+        speak_gui(response)
+        log_command(command, response)
+
     else:
         response = "Sorry, I don't know that command yet."
         speak_gui(response)

@@ -33,3 +33,12 @@
 [2025-05-25 08:27:43] Halo: Concord, North Carolina, United States: ☁️   +63°F
 
 
+[2025-05-25 13:34:56] You: notepad
+[2025-05-25 13:34:56] Halo: Sorry, I don't know that command yet.
+
+[2025-05-25 13:35:07] You: open notepad
+[2025-05-25 13:35:07] Halo: Opening Notepad.
+
+[2025-05-27 09:47:25] You: Tell me fact
+[2025-05-27 09:47:25] Halo: Bananas are berries, but strawberries aren't.
+

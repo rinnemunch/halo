@@ -50,11 +50,28 @@ layout.addWidget(log_button)
 
 # White background, blue text/buttons
 palette = QPalette()
-palette.setColor(QPalette.ColorRole.Window, QColor("#ffffff"))         # App background
-palette.setColor(QPalette.ColorRole.Base, QColor("#ffffff"))           # Text field background
-palette.setColor(QPalette.ColorRole.Text, QColor("#005A9C"))           # Text color
-palette.setColor(QPalette.ColorRole.Button, QColor("#005A9C"))         # Button background
-palette.setColor(QPalette.ColorRole.ButtonText, QColor("#ffffff"))     # Button text
+palette.setColor(QPalette.ColorRole.Window, QColor("#ffffff"))  # App background
+palette.setColor(QPalette.ColorRole.Base, QColor("#ffffff"))  # Text field background
+palette.setColor(QPalette.ColorRole.Text, QColor("#005A9C"))  # Text color
+palette.setColor(QPalette.ColorRole.Button, QColor("#005A9C"))  # Button background
+palette.setColor(QPalette.ColorRole.ButtonText, QColor("#ffffff"))  # Button text
+
+button_style = """
+QPushButton {
+    background-color: #005A9C;
+    color: white;
+    border-radius: 6px;
+    padding: 6px;
+}
+QPushButton:hover {
+    background-color: #003f73;
+}
+"""
+
+submit_button.setStyleSheet(button_style)
+speak_button.setStyleSheet(button_style)
+log_button.setStyleSheet(button_style)
+
 
 app.setPalette(palette)
 window.setLayout(layout)

@@ -1,84 +1,77 @@
 # 🎙️ Halo – Your Personal Voice Assistant
 
+Halo is a Python-based voice assistant with a modern PyQt6 interface, voice/text input, and customizable commands.
 
-## Halo is a Python-based voice assistant with a clean GUI, speech-to-text, and offline command execution.
-It listens to your voice, speaks responses, controls your apps, and keeps a log of everything you say.
+---
 
 ## 🧠 Features
-✅ GUI built with tkinter (Dark mode coming soon)
-✅ Voice recognition using speech_recognition
-✅ Text-to-speech with pyttsx3
-✅ Modular command system (halo_commands.py)
-✅ Threaded input so the UI stays responsive
-✅ Command logging (halo_log.txt)
-✅ Works offline for most features
+✅ Clean dark-themed GUI built with PyQt6  
+✅ Voice recognition using `speech_recognition`  
+✅ Text-to-speech with `pyttsx3`  
+✅ Modular command system (`halo_commands.py`)  
+✅ Animated AI face window (Cortana-style)  
+✅ Threaded voice + manual input (non-blocking UI)  
+✅ Command logging (`halo_log.txt`)  
+✅ Works offline for most features  
+✅ Dark mode with blue highlight styling  
+✅ Scaled UI and animated GIF rendering with `QMovie`  
 
-## 🗣️ Supported voice/text commands:
+---
 
-“Open YouTube”
+## 🗣️ Supported Voice/Text Commands
 
-“What time is it?”
+- “Open YouTube”  
+- “What time is it?”  
+- “Tell me a joke”  
+- “Check the weather”  
+- “Open Chrome”  
+- “Play music”  
+- “Show log”  
+- “Flip a coin”  
+- “Exit”  
 
-“Tell me a joke”
-
-“Check the weather”
-
-“Open Chrome”
-
-“Play music”
-
-“Show log”
-
-“Exit”
+---
 
 ## 🖼️ Preview
 
-![Preview](Gifs/halo_face_v2.gif)
+![Preview](Gifs/halo-cortana.gif)
 
+---
 
 ## 🚀 How to Run
 
 ### 1. Clone the repo
-bash
-````
+```bash
 git clone https://github.com/rinnemunch/halo.git
 cd halo
-````
-
-### 2. Create and activate a virtual environment
-bash 
-````
+``` 
+2. Create and activate a virtual environment
+```bash
 python -m venv venv
 .\venv\Scripts\activate  # Windows
-````
+``` 
 
-### 3. Install dependencies
-bash
-````
-pip install -r requirements.txt 
-````
-
-### If you have issues with pyaudio, use:
-bash 
-````
+3. Install dependencies 
+```bash 
+pip install -r requirements.txt
+``` 
+If pyaudio fails: 
+```bash 
 pip install pipwin
 pipwin install pyaudio
-````
-
-### 4. Start Halo
-bash
-````
+``` 
+4. Start Halo 
+```bash 
 python main.py
-````
-## 📂 Example Log
-bash
-````
+``` 
+
+📂 Example Log
+```bash 
 [2025-05-25 07:01:45] You: tell me a joke
-[2025-05-25 07:01:46] Halo: I told my computer I needed a break, and now it won’t stop sending me Kit-Kats. (Yes I searched up corny jokes lol)
-````
-## 💻 Requirements
-Python 3.10+
+[2025-05-25 07:01:46] Halo: I told my computer I needed a break, and now it won’t stop sending me Kit-Kats.
+``` 
+💻 Requirements 
+- Python 3.10+
+- Microphone (optional – typing works too)
+- Internet (only needed for weather queries) 
 
-Microphone (optional – all commands can also be typed)
-
-Internet (only needed for weather queries)

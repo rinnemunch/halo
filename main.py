@@ -7,6 +7,8 @@ from halo_commands import handle_command
 from PyQt6.QtWidgets import QApplication, QWidget, QTextEdit, QVBoxLayout
 from PyQt6.QtGui import QFont
 from PyQt6.QtWidgets import QLineEdit, QPushButton
+from PyQt6.QtGui import QPalette, QColor
+from PyQt6.QtCore import Qt
 
 # ---------------- App + Window ----------------
 app = QApplication(sys.argv)
@@ -19,7 +21,7 @@ layout = QVBoxLayout()
 
 output_box = QTextEdit()
 output_box.setReadOnly(True)
-output_box.setFont(QFont("Consolas", 11))
+output_box.setFont(QFont("Consolas", 11, weight=QFont.Weight.Bold))
 layout.addWidget(output_box)
 
 # Manual Entry Box
@@ -46,6 +48,15 @@ log_button.clicked.connect(lambda: show_log())
 log_button.setFixedHeight(30)
 layout.addWidget(log_button)
 
+# White background, blue text/buttons
+palette = QPalette()
+palette.setColor(QPalette.ColorRole.Window, QColor("#ffffff"))         # App background
+palette.setColor(QPalette.ColorRole.Base, QColor("#ffffff"))           # Text field background
+palette.setColor(QPalette.ColorRole.Text, QColor("#005A9C"))           # Text color
+palette.setColor(QPalette.ColorRole.Button, QColor("#005A9C"))         # Button background
+palette.setColor(QPalette.ColorRole.ButtonText, QColor("#ffffff"))     # Button text
+
+app.setPalette(palette)
 window.setLayout(layout)
 window.show()
 

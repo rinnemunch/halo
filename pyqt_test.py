@@ -3,8 +3,6 @@ from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLa
 from PyQt6.QtGui import QFont
 
 
-
-
 class HaloTest(QWidget):
     def __init__(self):
         super().__init__()
@@ -34,5 +32,25 @@ class HaloTest(QWidget):
 app = QApplication(sys.argv)
 app.setFont(QFont("Consolas", 11, weight=QFont.Weight.Bold))
 window = HaloTest()
+app.setStyleSheet("""
+    QWidget {
+        background-color: white;
+        font-family: Segoe UI;
+    }
+    QPushButton {
+        background-color: #1E90FF;
+        color: white;
+        border-radius: 6px;
+        padding: 6px;
+    }
+    QPushButton:hover {
+        background-color: #1C86EE;
+    }
+    QLabel {
+        color: #1E90FF;
+        font-size: 14px;
+    }
+""")
+
 window.show()
 sys.exit(app.exec())
